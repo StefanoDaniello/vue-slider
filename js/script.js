@@ -59,7 +59,8 @@ createApp({
     },
     mounted(){
         // manipolazione dei dati o del DOM dopo l'inserimento di dati o elementi
-
+        this.startInterval();
+        this.clearInterval();
     }
 
 }).mount('#app')
