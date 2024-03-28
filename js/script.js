@@ -25,16 +25,41 @@ createApp({
     data() {
         return {
             slides,
-            active: 0
+            active: 0,
+            intervalID: false
         }
     },
     methods: {
-        prev(){
-            this.active--
-        },
+
         next(){
-            this.active++
-        }
+            if(this.active < this.slides.length -1){
+                this.active++
+            }else{
+                this.active=0;
+            }
+        },
+        prev(){
+            if(this.active > 0){
+                this.active--
+            }else{
+                this.active = this.slides.length -1;
+            }
+        },
+       goToSlide(index){
+        this.active = index;
+       },
+       startInterval(){
+        this.intervalID =setInterval(this.next,1000)
+       },
+
+       clearInterval(){
+        clearInterval(this.intervalID)
+       }
+  
     },
+    mounted(){
+        // manipolazione dei dati o del DOM dopo l'inserimento di dati o elementi
+
+    }
 
 }).mount('#app')
