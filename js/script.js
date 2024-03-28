@@ -49,7 +49,7 @@ createApp({
         this.active = index;
        },
        startInterval(){
-        this.intervalID =setInterval(this.next,1000)
+        this.intervalID =setInterval(this.next,3000)
        },
 
        clearInterval(){
@@ -60,7 +60,6 @@ createApp({
     mounted(){
         // manipolazione dei dati o del DOM dopo l'inserimento di dati o elementi
         this.startInterval();
-        this.clearInterval();
     }
 
 }).mount('#app')
