@@ -5,11 +5,13 @@
 }
 
 .container {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 30px auto;
+
 }
+
 
 .item {
     float: left;
@@ -29,7 +31,6 @@
     right: 20px;
     bottom: 20px;
     text-align: right;
-    color: white;
 }
 
 .thumbs {
@@ -51,7 +52,7 @@
 }
 
 .thumb.active {
-    border: 2px solid #ccc;
+    border: 2px solid ;
     opacity: 1;
 }
 
@@ -82,8 +83,8 @@ oppure i caratteri ∧ (&and;) e ∨ (&or;)
     content: '';
     width: 10px;
     height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
+    border-top: 1px solid;
+    border-right: 1px solid ;
     display: block;
     position: absolute;
     top: 35%;
@@ -95,11 +96,116 @@ oppure i caratteri ∧ (&and;) e ∨ (&or;)
     content: '';
     width: 10px;
     height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
+    border-top: 1px solid;
+    border-right: 1px solid;
     display: block;
     position: absolute;
     bottom: 35%;
     left: 50%;
     transform: translate(-50%) rotate(135deg);
+}
+
+.app {
+    /* height: 100vh; */
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    transition: 1s;
+}
+  
+  .dark-mode {
+    background-color: #333;
+    color: #fff;
+    transition: 1s;
+  }
+  
+  #toggle-btn {
+    margin: 20px;
+    display: inline-block;
+    width:86px;
+    height: 48px;
+    background-color: #1EC3F4;
+    background-size: 100%;
+    border-radius: 24px;
+    content: '';
+    position: relative;
+    transition: all ease-in-out .4s;
+    cursor: pointer;
+}
+
+#toggle-btn::before {
+    position: absolute;
+    width:36px;
+    height: 36px;
+    background-color: white;
+    border-radius: 50%;
+    left:6px;
+    top:6px;
+    content: '';
+    transition: all ease-in-out .4s;
+    z-index: 10;
+}
+
+
+#toggle-btn.toggle-btn--dark {
+    background-color: #13447E;
+}
+
+#toggle-btn.toggle-btn--dark::before {
+    left: 44px;
+}
+
+
+
+.moon-sun {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 12px;
+    left: 50px;
+    background-image:  url('https://png.pngtree.com/png-vector/20230414/ourmid/pngtree-sun-orange-three-dimensional-illustration-png-image_6694186.png');
+    background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* transition: all 0.4s; */
+}
+
+.toggle-btn--dark .moon-sun {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-image: url('https://png.pngtree.com/png-clipart/20210310/original/pngtree-the-surface-of-a-round-moon-png-image_5955908.png');
+}
+
+
+
+.st-container{
+    width: 700px;
+    height: 700px;
+    margin: 0 auto;
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    border: 1px solid ;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+}
+
+.even{
+    background-color: red;
+}
+.odd{
+    background-color: green;
+}
+
+ul{
+    list-style: none;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #999;
 }
