@@ -209,3 +209,26 @@ ul{
     text-decoration: line-through;
     color: #999;
 }
+
+.search-container {
+    position: relative;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.search-input {
+    width: calc(100% - 10px); /* Riduco di 30px per lasciare spazio all'icona */
+    padding: 10px 10px 10px 30px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Posizionamento a sinistra */
+    transform: translateY(-50%);
+    cursor: pointer;
+}
