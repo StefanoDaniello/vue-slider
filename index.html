@@ -65,12 +65,22 @@
             <input type="text" v-model="newTask" class="form-control w-25 text-center">
             <button @click="addTask()" class="btn btn-success mx-2">Aggiungi</button>
         </div>
- 
+        
+
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input form-control" placeholder="Cerca..." v-model="searchQuery" @input="findTask">
+        </div>
+        <!-- <button @click="findTask()" class="btn btn-success">Cerca</button> -->
+
+
+
+       
         <ul class="p-2 m-0">
-            <li v-for="(tasks, index) in tasks" :key="index">
-                <span :class="{ 'completed': tasks.completed }">{{tasks.name}}</span>
+            <li v-for="(tasks,index) in displayedTasks" :key="index">
+                <span :class="{'completed' :tasks.completed}">{{tasks.name}}</span>
                 <button @click="completeTask(index)" class="btn btn-success m-2">Complete</button>
-                <button @click="removeTask(index)" class="btn btn-danger ">Remove</button>
+                <button @click="removeTasks(index)"  class="btn btn-danger ">Remove</button> 
             </li>
         </ul>
         
@@ -79,3 +89,7 @@
 </body>
 
 </html>
+
+
+
+

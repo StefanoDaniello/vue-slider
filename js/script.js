@@ -30,9 +30,15 @@ createApp({
             // matrice per memorizzare i numeri dei quadrati
             grid:[],
             showGrid:false,
-            prova:false,
-            newTask: '',
-            tasks: []
+            find:'',
+            searchQuery: '',
+            filteredTasks: [],
+            newTask:'',
+            tasks:[],
+            displayFilteredTasks: false 
+            // Aggiungi il flag per gestire se visualizzare le attività filtrate o meno
+
+           
         }
     },
     methods:{
@@ -81,24 +87,64 @@ createApp({
                 this.generateGrid(); // Genera la griglia solo se non è già mostrata e non è stata generata
             }
         },
-        addTask(){
-
+        addTask() {
             if (this.newTask.trim() !== '') {
-            this.tasks.push({ name: this.newTask, completed: false });
-            this.newTask = '';
-    }
+                const newTask = { name: this.newTask, completed: false };
+                this.tasks.push(newTask); // Aggiungi la nuova attività all'array tasks
+                this.filteredTasks.push(newTask); // Aggiungi la nuova attività all'array filteredTasks
+                this.newTask = '';
+            }
+        },        
+        removeTasks(index) {
+            const taskToRemove = this.filteredTasks[index];
+            if (taskToRemove) {
+                const mainTaskIndex = this.tasks.findIndex(task => task === taskToRemove);
+                this.filteredTasks.splice(index, 1); // Rimuovi dall'array filtrato
+                if (mainTaskIndex !== -1) {
+                    this.tasks.splice(mainTaskIndex, 1); // Rimuovi dall'array principale
+                }
+            }
         },
+        
         completeTask(index){
+            const task = this.filteredTasks[index];
+        if (task) {
+            task.completed = true;
+        } else {
             this.tasks[index].completed = true;
-        },    
-        removeTask(index){
-            this.tasks.splice(index, 1);
+        }
+        },
+        findTask() {
+            if (this.searchQuery.trim() === '') {
+                // Se il campo di ricerca è vuoto, mostriamo tutte le attività
+                this.displayFilteredTasks = false; // Imposta il flag a false per mostrare tutte le attività
+            } else {
+                // Se il campo di ricerca non è vuoto, mostriamo solo le attività filtrate
+                this.filteredTasks = this.tasks.filter(task =>
+                    task.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+                );
+                this.displayFilteredTasks = true; // Imposta il flag a true per mostrare solo le attività filtrate
+            }
         }
         
       
+    },
+    computed: {
+        displayedTasks() {
+            if (this.searchQuery.trim() === '') {
+                // Se il campo di ricerca è vuoto, mostra tutte le attività
+                return this.tasks;
+            } else {
+                // Se il campo di ricerca non è vuoto, mostra solo le attività filtrate
+                return this.filteredTasks;            
+            }
+        }
     },
     mounted(){
         this.startTimer()
         this.generateGrid()
     }
 }).mount('#app');
+
+
+
